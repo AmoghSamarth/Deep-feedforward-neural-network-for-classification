@@ -112,3 +112,47 @@ def plot_feature_distributions(df):
 
     plt.tight_layout()
     return fig
+
+def draw_fnn_architecture():
+    layer_sizes = [4, 16, 16, 8, 3]
+    layer_titles = ['INPUT', 'DENSE', 'DENSE', 'DENSE', 'OUTPUT']
+    layer_subtitles = ['4 Features', '16 Neurons\nReLU', '16 Neurons\nReLU', '8 Neurons\nReLU', '3 Classes\nSoftmax']
+
+    fig, ax = plt.subplots(figsize=(11, 4.6), dpi=120)
+    fig.patch.set_facecolor(BG_COLOR)
+    ax.set_facecolor(BG_COLOR)
+    ax.axis('off')
+
+    x_coords = [0.10, 0.30, 0.50, 0.70, 0.90]
+    
+    node_positions = []
+    for l_idx, count in enumerate(layer_sizes):
+        display_nodes = min(count, 12)
+        spacing = 0.74 / (display_nodes + 1)
+        y_positions = [(i + 1) * spacing + 0.08 for i in range(display_nodes)]
+        node_positions.append(y_positions)
+
+    for l in range(len(layer_sizes) - 1):
+        x1, x2 = x_coords[l], x_coords[l + 1]
+        for y1 in node_positions[l]:
+            for y2 in node_positions[l + 1]:
+                ax.plot([x1, x2], [y1, y2], color='#CBD5E1', alpha=0.18, linewidth=0.6, zorder=1)
+
+    for l, (x, y_list) in enumerate(zip(x_coords, node_positions)):
+        is_output = (l == len(layer_sizes) - 1)
+        is_input = (l == 0)
+        node_color = ACCENT_COLOR if is_output else ('#3B82F6' if is_input else '#60A5FA')
+
+        for y in y_list:
+            circle = plt.Circle((x, y), 0.016, color=node_color, ec='#FFFFFF', lw=1.2, zorder=3)
+            ax.add_patch(circle)
+
+        ax.text(x, 0.93, layer_titles[l], ha='center', va='bottom',
+                fontsize=9.5, fontweight='700', color=TEXT_COLOR)
+        ax.text(x, 0.85, layer_subtitles[l], ha='center', va='top',
+                fontsize=8, color=MUTED_TEXT, linespacing=1.2)
+
+    ax.set_xlim(0.02, 0.98)
+    ax.set_ylim(0.04, 1.02)
+    plt.tight_layout()
+    return fig
