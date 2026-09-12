@@ -127,3 +127,46 @@ def train_fnn_model(model, X_train, y_train, X_val, y_val, epochs=80, batch_size
         verbose=0
     )
     return model, history
+
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+
+def evaluate_fnn_model(model, X_test, y_test_cat, y_test_int, class_names=CLASS_NAMES):
+    eval_results = model.evaluate(X_test, y_test_cat, verbose=0)
+    test_loss = eval_results[0]
+    test_accuracy = eval_results[1]
+
+    y_pred_probs = model.predict(X_test, verbose=0)
+    y_pred_classes = np.argmax(y_pred_probs, axis=1)
+
+    cm = confusion_matrix(y_test_int, y_pred_classes)
+
+    report_dict = classification_report(
+        y_test_int, y_pred_classes,
+        target_names=class_names,
+        output_dict=True,
+        zero_division=0
+    )
+    report_text = classification_report(
+        y_test_int, y_pred_classes,
+        target_names=class_names,
+        zero_division=0
+    )
+
+    comparison_df = pd.DataFrame({
+        'Sample #': [f"Test Sample {i+1}" for i in range(len(y_test_int))],
+        'Actual Class': [class_names[i] for i in y_test_int],
+        'Predicted Class': [class_names[i] for i in y_pred_classes],
+        'Confidence': [f"{y_pred_probs[i][y_pred_classes[i]] * 100:.2f}%" for i in range(len(y_test_int))],
+        'Match': ['✓ Correct' if actual == pred else '✗ Incorrect' for actual, pred in zip(y_test_int, y_pred_classes)]
+    })
+
+    return {
+        'test_loss': test_loss,
+        'test_accuracy': test_accuracy,
+        'y_pred_probs': y_pred_probs,
+        'y_pred_classes': y_pred_classes,
+        'confusion_matrix': cm,
+        'report_dict': report_dict,
+        'report_text': report_text,
+        'comparison_df': comparison_df
+    }
