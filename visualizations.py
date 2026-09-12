@@ -1,11 +1,20 @@
+"""
+Visualization Utilities for Deep Feedforward Neural Network (FNN)
+Course: Pattern Recognition (TAE 1)
+Student: Amogh Samarth | USN: CM23034
+
+Minimalist, publication-grade figures using a consistent modern accent palette.
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-ACCENT_COLOR = '#2563EB'
-ACCENT_SECONDARY = '#64748B'
-ACCENT_LIGHT = '#DBEAFE'
+# Consistent Modern Minimalist Styling
+ACCENT_COLOR = '#2563EB'       # Primary Accent Blue
+ACCENT_SECONDARY = '#64748B'   # Neutral Slate
+ACCENT_LIGHT = '#DBEAFE'       # Light Tint
 BG_COLOR = '#FFFFFF'
 TEXT_COLOR = '#0F172A'
 MUTED_TEXT = '#64748B'
@@ -15,11 +24,16 @@ plt.rcParams['font.sans-serif'] = ['Segoe UI', 'DejaVu Sans', 'Arial']
 plt.rcParams['axes.edgecolor'] = '#E2E8F0'
 plt.rcParams['axes.linewidth'] = 0.8
 
+
 def plot_training_curves(history):
+    """
+    Plots clean, minimalist training vs validation accuracy and loss curves.
+    """
     epochs_range = range(1, len(history.history['loss']) + 1)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 3.8), dpi=120)
     fig.patch.set_facecolor(BG_COLOR)
 
+    # 1. Accuracy Curve
     ax1.set_facecolor(BG_COLOR)
     ax1.plot(epochs_range, [a * 100 for a in history.history['accuracy']], label='Train', color=ACCENT_COLOR, linewidth=2)
     ax1.plot(epochs_range, [a * 100 for a in history.history['val_accuracy']], label='Validation', color=ACCENT_SECONDARY, linewidth=2, linestyle='--')
@@ -32,6 +46,7 @@ def plot_training_curves(history):
     for spine in ax1.spines.values():
         spine.set_color('#E2E8F0')
 
+    # 2. Loss Curve
     ax2.set_facecolor(BG_COLOR)
     ax2.plot(epochs_range, history.history['loss'], label='Train', color=ACCENT_COLOR, linewidth=2)
     ax2.plot(epochs_range, history.history['val_loss'], label='Validation', color=ACCENT_SECONDARY, linewidth=2, linestyle='--')
@@ -46,7 +61,11 @@ def plot_training_curves(history):
     plt.tight_layout()
     return fig
 
+
 def plot_confusion_matrix_figure(cm, class_names):
+    """
+    Renders a minimalist Confusion Matrix heatmap with subtle colors.
+    """
     fig, ax = plt.subplots(figsize=(5.5, 4.2), dpi=120)
     fig.patch.set_facecolor(BG_COLOR)
     ax.set_facecolor(BG_COLOR)
@@ -74,7 +93,11 @@ def plot_confusion_matrix_figure(cm, class_names):
     plt.tight_layout()
     return fig
 
+
 def plot_feature_distributions(df):
+    """
+    Creates a clean, minimal 2x2 grid showing feature distributions across species.
+    """
     fig, axes = plt.subplots(1, 4, figsize=(11, 2.8), dpi=120)
     fig.patch.set_facecolor(BG_COLOR)
 
@@ -113,7 +136,12 @@ def plot_feature_distributions(df):
     plt.tight_layout()
     return fig
 
+
 def draw_fnn_architecture():
+    """
+    Generates a clean, modern, spacious neural network topology diagram:
+    4 Inputs -> 16 Dense (ReLU) -> 16 Dense (ReLU) -> 8 Dense (ReLU) -> 3 Output (Softmax).
+    """
     layer_sizes = [4, 16, 16, 8, 3]
     layer_titles = ['INPUT', 'DENSE', 'DENSE', 'DENSE', 'OUTPUT']
     layer_subtitles = ['4 Features', '16 Neurons\nReLU', '16 Neurons\nReLU', '8 Neurons\nReLU', '3 Classes\nSoftmax']
@@ -125,19 +153,23 @@ def draw_fnn_architecture():
 
     x_coords = [0.10, 0.30, 0.50, 0.70, 0.90]
     
+    # Calculate vertical spacing
     node_positions = []
     for l_idx, count in enumerate(layer_sizes):
+        # We draw clean evenly spaced nodes
         display_nodes = min(count, 12)
         spacing = 0.74 / (display_nodes + 1)
         y_positions = [(i + 1) * spacing + 0.08 for i in range(display_nodes)]
         node_positions.append(y_positions)
 
+    # Draw connection lines (subtle, clean)
     for l in range(len(layer_sizes) - 1):
         x1, x2 = x_coords[l], x_coords[l + 1]
         for y1 in node_positions[l]:
             for y2 in node_positions[l + 1]:
                 ax.plot([x1, x2], [y1, y2], color='#CBD5E1', alpha=0.18, linewidth=0.6, zorder=1)
 
+    # Draw nodes
     for l, (x, y_list) in enumerate(zip(x_coords, node_positions)):
         is_output = (l == len(layer_sizes) - 1)
         is_input = (l == 0)
@@ -147,6 +179,7 @@ def draw_fnn_architecture():
             circle = plt.Circle((x, y), 0.016, color=node_color, ec='#FFFFFF', lw=1.2, zorder=3)
             ax.add_patch(circle)
 
+        # Header Box
         ax.text(x, 0.93, layer_titles[l], ha='center', va='bottom',
                 fontsize=9.5, fontweight='700', color=TEXT_COLOR)
         ax.text(x, 0.85, layer_subtitles[l], ha='center', va='top',
@@ -157,7 +190,11 @@ def draw_fnn_architecture():
     plt.tight_layout()
     return fig
 
+
 def plot_probability_chart(probabilities, class_names):
+    """
+    Clean horizontal bar chart showing Softmax class probabilities.
+    """
     fig, ax = plt.subplots(figsize=(6, 2.0), dpi=120)
     fig.patch.set_facecolor(BG_COLOR)
     ax.set_facecolor(BG_COLOR)
