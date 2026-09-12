@@ -31,3 +31,20 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+st.markdown('''<style>
+    [data-testid="stSidebar"] { display: none; }
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stApp {
+        background-color: #F8FAFC;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #0F172A;
+    }
+    .block-container {
+        max-width: 980px !important;
+        padding-top: 2rem !important;
+        padding-bottom: 3rem !important;
+    }
+</style>''', unsafe_allow_html=True)
