@@ -36,3 +36,7 @@ def check_missing_values(df):
         'Missing Percentage (%)': null_percentages.values
     })
     return missing_summary
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.utils import to_categorical
