@@ -170,3 +170,25 @@ def evaluate_fnn_model(model, X_test, y_test_cat, y_test_int, class_names=CLASS_
         'report_text': report_text,
         'comparison_df': comparison_df
     }
+
+def predict_sample(model, scaler, sepal_length, sepal_width, petal_length, petal_width, class_names=CLASS_NAMES):
+    raw_vector = np.array([[sepal_length, sepal_width, petal_length, petal_width]], dtype=np.float32)
+    scaled_vector = scaler.transform(raw_vector)
+
+    probabilities = model.predict(scaled_vector, verbose=0)[0]
+    predicted_idx = int(np.argmax(probabilities))
+    predicted_class = class_names[predicted_idx]
+    predicted_confidence = float(probabilities[predicted_idx])
+
+    prob_breakdown = {
+        class_names[i]: float(probabilities[i]) for i in range(len(class_names))
+    }
+
+    return {
+        'predicted_class': predicted_class,
+        'predicted_index': predicted_idx,
+        'confidence': predicted_confidence,
+        'probabilities': prob_breakdown,
+        'raw_input': [sepal_length, sepal_width, petal_length, petal_width],
+        'scaled_input': scaled_vector[0].tolist()
+    }
