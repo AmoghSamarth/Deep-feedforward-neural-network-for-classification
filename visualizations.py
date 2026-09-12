@@ -45,3 +45,31 @@ def plot_training_curves(history):
 
     plt.tight_layout()
     return fig
+
+def plot_confusion_matrix_figure(cm, class_names):
+    fig, ax = plt.subplots(figsize=(5.5, 4.2), dpi=120)
+    fig.patch.set_facecolor(BG_COLOR)
+    ax.set_facecolor(BG_COLOR)
+
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap="Blues",
+        xticklabels=[c.replace('Iris ', '') for c in class_names],
+        yticklabels=[c.replace('Iris ', '') for c in class_names],
+        cbar=False,
+        ax=ax,
+        linewidths=1,
+        linecolor='#FFFFFF',
+        square=True,
+        annot_kws={"size": 12, "fontweight": "600", "color": TEXT_COLOR}
+    )
+
+    ax.set_title('Confusion Matrix', fontsize=12, fontweight='600', pad=12, color=TEXT_COLOR)
+    ax.set_xlabel('Predicted Class', fontsize=10, fontweight='500', labelpad=8, color=MUTED_TEXT)
+    ax.set_ylabel('Actual Class', fontsize=10, fontweight='500', labelpad=8, color=MUTED_TEXT)
+    ax.tick_params(axis='both', labelsize=10, colors=MUTED_TEXT)
+    
+    plt.tight_layout()
+    return fig
