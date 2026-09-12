@@ -84,3 +84,24 @@ def preprocess_data(df, test_size=0.15, val_size=0.15, random_state=RANDOM_STATE
         'y_test': y_test_cat,
         'scaler': scaler
     }
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Input
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
+
+def build_fnn_model(learning_rate=0.01):
+    model = Sequential(name="Deep_FNN_Classifier")
+    model.add(Input(shape=(4,), name="Input_Layer"))
+    model.add(Dense(16, activation='relu', name="Dense_Hidden_1_16"))
+    model.add(Dense(16, activation='relu', name="Dense_Hidden_2_16"))
+    model.add(Dense(8, activation='relu', name="Dense_Hidden_3_8"))
+    model.add(Dense(3, activation='softmax', name="Dense_Output_3_Softmax"))
+
+    optimizer = Adam(learning_rate=learning_rate)
+    model.compile(
+        optimizer=optimizer,
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    return model
