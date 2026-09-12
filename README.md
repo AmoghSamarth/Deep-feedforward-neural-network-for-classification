@@ -19,3 +19,9 @@ $$\\text{Input (4 Features)} \\to \\text{Dense (16, ReLU)} \\to \\text{Dense (16
 3. **StandardScaler Normalization:** Fitted strictly on training partition.
 4. **Stratified Partition:** 70% Train, 15% Validation, 15% Test.
 5. **Target Encoding:** One-Hot categorical vectors.
+
+## 🚀 Installation & Execution
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
