@@ -1,5 +1,10 @@
 # Deep Feedforward Neural Network for Classification
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.35%2B-red)
+![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-1.4%2B-blueviolet)
+
 **Course:** Pattern Recognition  
 **Assessment:** TAE 1: Project Based Learning – Phase I  
 **Student Name:** Amogh Samarth  
