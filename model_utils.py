@@ -40,3 +40,47 @@ def check_missing_values(df):
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.utils import to_categorical
+
+def preprocess_data(df, test_size=0.15, val_size=0.15, random_state=RANDOM_STATE):
+    X = df[FEATURE_KEYS].values
+    y = df['target'].values
+
+    X_train_val, X_test, y_train_val, y_test = train_test_split(
+        X, y,
+        test_size=test_size,
+        stratify=y,
+        random_state=random_state
+    )
+
+    relative_val_size = val_size / (1.0 - test_size)
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train_val, y_train_val,
+        test_size=relative_val_size,
+        stratify=y_train_val,
+        random_state=random_state
+    )
+
+    y_train_cat = to_categorical(y_train, num_classes=3)
+    y_val_cat = to_categorical(y_val, num_classes=3)
+    y_test_cat = to_categorical(y_test, num_classes=3)
+
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_val_scaled = scaler.transform(X_val)
+    X_test_scaled = scaler.transform(X_test)
+
+    return {
+        'X_train_raw': X_train,
+        'X_val_raw': X_val,
+        'X_test_raw': X_test,
+        'X_train': X_train_scaled,
+        'X_val': X_val_scaled,
+        'X_test': X_test_scaled,
+        'y_train_int': y_train,
+        'y_val_int': y_val,
+        'y_test_int': y_test,
+        'y_train': y_train_cat,
+        'y_val': y_val_cat,
+        'y_test': y_test_cat,
+        'scaler': scaler
+    }
