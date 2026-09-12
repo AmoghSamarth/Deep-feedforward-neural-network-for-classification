@@ -7,6 +7,19 @@
 
 ---
 
+## 📑 Table of Contents
+- [📖 Project Overview](#-project-overview)
+- [🛠️ Technology Stack](#-technology-stack)
+- [🧠 Neural Network Architecture](#-deep-feedforward-neural-network-architecture)
+- [🧮 Mathematical Foundations](#-mathematical-foundations)
+- [⚙️ Data Preprocessing Pipeline](#-data-preprocessing-pipeline)
+- [🚀 Installation and Execution](#-installation-and-execution)
+- [🖥️ Streamlit Dashboard Pages](#-streamlit-dashboard-pages)
+- [🎓 Viva Questions & Answers](#-viva-questions--answers-quick-reference)
+- [👨‍💻 Author Details](#-author--submission-details)
+
+---
+
 ## 📖 Project Overview
 This project presents an interactive, academic-grade web-based demonstration of a **Deep Feedforward Neural Network (FNN)** for multi-class pattern classification applied to the classic **Iris flower dataset**.
 
