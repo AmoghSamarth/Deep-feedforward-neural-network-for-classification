@@ -101,3 +101,8 @@ for idx, item in enumerate(nav_items):
         st.rerun()
 
 st.write("")
+
+if st.session_state.current_page == "Home":
+    st.markdown("## Deep Feedforward Neural Network for Classification")
+    st.caption("Pattern Recognition • TAE 1 • Project Based Learning – Phase I")
+    st.write("A Deep Feedforward Neural Network processes data in one direction through fully connected layers to learn patterns and classify inputs.")
