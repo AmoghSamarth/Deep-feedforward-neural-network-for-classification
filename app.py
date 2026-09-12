@@ -89,6 +89,11 @@ st.markdown("""
         padding: 24px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
         margin-bottom: 16px;
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .clean-card:hover {
+        border-color: #CBD5E1;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
     .clean-card-compact {
         background: #FFFFFF;
@@ -97,9 +102,11 @@ st.markdown("""
         padding: 16px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
         text-align: center;
+        transition: transform 0.15s ease, border-color 0.15s ease;
     }
     .clean-card-compact:hover {
-        border-color: #CBD5E1;
+        border-color: #94A3B8;
+        transform: translateY(-1px);
     }
 
     /* Typography */
