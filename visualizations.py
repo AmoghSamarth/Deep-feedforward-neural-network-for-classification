@@ -73,3 +73,42 @@ def plot_confusion_matrix_figure(cm, class_names):
     
     plt.tight_layout()
     return fig
+
+def plot_feature_distributions(df):
+    fig, axes = plt.subplots(1, 4, figsize=(11, 2.8), dpi=120)
+    fig.patch.set_facecolor(BG_COLOR)
+
+    features = [
+        ('sepal_length', 'Sepal Length'),
+        ('sepal_width', 'Sepal Width'),
+        ('petal_length', 'Petal Length'),
+        ('petal_width', 'Petal Width')
+    ]
+    palette = [ACCENT_COLOR, '#38BDF8', '#94A3B8']
+
+    for idx, (col, title) in enumerate(features):
+        ax = axes[idx]
+        ax.set_facecolor(BG_COLOR)
+        sns.boxplot(
+            x='species',
+            y=col,
+            data=df,
+            palette=palette,
+            ax=ax,
+            width=0.45,
+            boxprops=dict(alpha=0.9, edgecolor=TEXT_COLOR, linewidth=0.8),
+            medianprops=dict(color=TEXT_COLOR, linewidth=1.2),
+            whiskerprops=dict(color=MUTED_TEXT, linewidth=0.8),
+            capprops=dict(color=MUTED_TEXT, linewidth=0.8)
+        )
+        ax.set_title(title, fontsize=10, fontweight='600', color=TEXT_COLOR, pad=8)
+        ax.set_xlabel('')
+        ax.set_ylabel('cm' if idx == 0 else '', fontsize=9, color=MUTED_TEXT)
+        ax.tick_params(axis='x', labelsize=8.5, colors=MUTED_TEXT)
+        ax.tick_params(axis='y', labelsize=8.5, colors=MUTED_TEXT)
+        ax.grid(True, linestyle='-', color=GRID_COLOR, linewidth=0.8)
+        for spine in ax.spines.values():
+            spine.set_color('#E2E8F0')
+
+    plt.tight_layout()
+    return fig
