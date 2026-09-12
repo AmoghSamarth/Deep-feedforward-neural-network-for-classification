@@ -89,3 +89,15 @@ if 'model_state' not in st.session_state:
 
 model_state = st.session_state.model_state
 df, missing_df = get_dataset()
+
+nav_items = ["Home", "Dataset", "Preprocessing", "Architecture", "Training", "Evaluation", "Predict"]
+cols = st.columns(len(nav_items))
+
+for idx, item in enumerate(nav_items):
+    is_active = (st.session_state.current_page == item)
+    btn_type = "primary" if is_active else "secondary"
+    if cols[idx].button(item, key=f"nav_{item}", use_container_width=True, type=btn_type):
+        st.session_state.current_page = item
+        st.rerun()
+
+st.write("")
