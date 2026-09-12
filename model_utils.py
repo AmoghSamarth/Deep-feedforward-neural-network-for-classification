@@ -26,3 +26,13 @@ def load_iris_dataset():
     df['target'] = iris.target
     df['species'] = df['target'].map({0: 'Setosa', 1: 'Versicolor', 2: 'Virginica'})
     return df, iris
+
+def check_missing_values(df):
+    null_counts = df.isnull().sum()
+    null_percentages = (null_counts / len(df)) * 100
+    missing_summary = pd.DataFrame({
+        'Feature / Column': df.columns,
+        'Missing Count': null_counts.values,
+        'Missing Percentage (%)': null_percentages.values
+    })
+    return missing_summary
