@@ -12,3 +12,10 @@ This project presents a minimal, modern, and interactive demonstration of a **De
 
 ## 🧠 Neural Network Architecture
 $$\\text{Input (4 Features)} \\to \\text{Dense (16, ReLU)} \\to \\text{Dense (16, ReLU)} \\to \\text{Dense (8, ReLU)} \\to \\text{Dense (3, Softmax)}$$
+
+## ⚙️ Data Preprocessing Pipeline
+1. **Dataset Loading:** 150 Iris flower samples.
+2. **Missing Values Check:** 0 null values verified.
+3. **StandardScaler Normalization:** Fitted strictly on training partition.
+4. **Stratified Partition:** 70% Train, 15% Validation, 15% Test.
+5. **Target Encoding:** One-Hot categorical vectors.
