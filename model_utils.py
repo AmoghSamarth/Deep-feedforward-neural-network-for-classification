@@ -105,3 +105,25 @@ def build_fnn_model(learning_rate=0.01):
         metrics=['accuracy']
     )
     return model
+
+def train_fnn_model(model, X_train, y_train, X_val, y_val, epochs=80, batch_size=16, patience=15, callbacks=None):
+    if callbacks is None:
+        callbacks = []
+    
+    early_stop = EarlyStopping(
+        monitor='val_loss',
+        patience=patience,
+        restore_best_weights=True,
+        verbose=0
+    )
+    callbacks.append(early_stop)
+
+    history = model.fit(
+        X_train, y_train,
+        validation_data=(X_val, y_val),
+        epochs=epochs,
+        batch_size=batch_size,
+        callbacks=callbacks,
+        verbose=0
+    )
+    return model, history
