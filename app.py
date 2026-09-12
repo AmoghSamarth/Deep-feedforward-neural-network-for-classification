@@ -48,3 +48,44 @@ st.markdown('''<style>
         padding-bottom: 3rem !important;
     }
 </style>''', unsafe_allow_html=True)
+
+@st.cache_data
+def get_dataset():
+    df, _ = load_iris_dataset()
+    missing_df = check_missing_values(df)
+    return df, missing_df
+
+@st.cache_resource
+def get_trained_model():
+    df, _ = get_dataset()
+    data = preprocess_data(df)
+    model = build_fnn_model(learning_rate=0.01)
+    model, history = train_fnn_model(
+        model,
+        data['X_train'], data['y_train'],
+        data['X_val'], data['y_val'],
+        epochs=80,
+        batch_size=16
+    )
+    eval_results = evaluate_fnn_model(
+        model,
+        data['X_test'],
+        data['y_test'],
+        data['y_test_int']
+    )
+    return {
+        'model': model,
+        'history': history,
+        'eval_results': eval_results,
+        'data': data
+    }
+
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "Home"
+
+if 'model_state' not in st.session_state:
+    with st.spinner("Initializing Deep Neural Network..."):
+        st.session_state.model_state = get_trained_model()
+
+model_state = st.session_state.model_state
+df, missing_df = get_dataset()
