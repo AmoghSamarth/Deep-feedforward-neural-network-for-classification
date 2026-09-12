@@ -156,3 +156,35 @@ def draw_fnn_architecture():
     ax.set_ylim(0.04, 1.02)
     plt.tight_layout()
     return fig
+
+def plot_probability_chart(probabilities, class_names):
+    fig, ax = plt.subplots(figsize=(6, 2.0), dpi=120)
+    fig.patch.set_facecolor(BG_COLOR)
+    ax.set_facecolor(BG_COLOR)
+
+    classes = [c.replace('Iris ', '') for c in class_names]
+    probs = [probabilities[c] * 100 for c in class_names]
+    
+    max_idx = int(np.argmax(probs))
+    colors = [ACCENT_COLOR if i == max_idx else '#94A3B8' for i in range(len(classes))]
+
+    bars = ax.barh(classes, probs, color=colors, height=0.45, edgecolor='none')
+    
+    for bar, prob in zip(bars, probs):
+        width = bar.get_width()
+        text_x = width + 2 if width < 85 else width - 10
+        text_color = TEXT_COLOR if width < 85 else '#FFFFFF'
+        ax.text(text_x, bar.get_y() + bar.get_height() / 2, f"{prob:.1f}%",
+                ha='left' if width < 85 else 'right', va='center',
+                fontsize=9.5, fontweight='600', color=text_color)
+
+    ax.set_xlim(0, 105)
+    ax.set_xlabel('')
+    ax.tick_params(axis='y', labelsize=10, colors=TEXT_COLOR)
+    ax.tick_params(axis='x', labelsize=8, colors=MUTED_TEXT)
+    ax.grid(True, axis='x', linestyle='-', color=GRID_COLOR, linewidth=0.8)
+    for spine in ax.spines.values():
+        spine.set_color('#E2E8F0')
+    
+    plt.tight_layout()
+    return fig
