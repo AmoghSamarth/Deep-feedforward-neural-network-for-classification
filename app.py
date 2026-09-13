@@ -33,7 +33,7 @@ from visualizations import (
     plot_probability_chart
 )
 
-# Page configuration - Clean minimal layout
+# Page configuration
 st.set_page_config(
     page_title="Deep FNN | Pattern Recognition",
     page_icon="🧠",
@@ -41,47 +41,101 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Modern Minimalist Custom CSS
+# High-End Minimalist Modern CSS
 st.markdown("""
 <style>
-    /* Hide Streamlit default sidebar & decoration */
-    [data-testid="stSidebar"] {
-        display: none;
-    }
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* Hide Streamlit default chrome & sidebars */
+    [data-testid="stSidebar"] { display: none !important; }
+    #MainMenu { visibility: hidden !important; }
+    footer { visibility: hidden !important; }
+    header { visibility: hidden !important; }
+    .stDeployButton { display: none !important; }
     
-    /* Global Base */
+    /* Clean base page styling */
     .stApp {
-        background-color: #F8FAFC;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        color: #0F172A;
+        background-color: #F8FAFC !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+        color: #0F172A !important;
     }
 
     /* Container constraints */
     .block-container {
-        max-width: 980px !important;
-        padding-top: 2rem !important;
-        padding-bottom: 3rem !important;
+        max-width: 1040px !important;
+        padding-top: 1.8rem !important;
+        padding-bottom: 3.5rem !important;
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
     }
 
-    /* Navigation Bar */
-    .nav-container {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 2.2rem;
-        background: #FFFFFF;
-        padding: 6px;
-        border-radius: 12px;
-        border: 1px solid #E2E8F0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    /* Modern Styled Tab Bar */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 6px !important;
+        background-color: #FFFFFF !important;
+        padding: 6px 8px !important;
+        border-radius: 12px !important;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        margin-bottom: 26px !important;
+        justify-content: center !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
     }
-    
-    /* Clean Cards */
+    .stTabs [data-baseweb="tab"] {
+        height: 42px !important;
+        padding: 0px 20px !important;
+        background-color: transparent !important;
+        border-radius: 8px !important;
+        color: #64748B !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        border: 1px solid transparent !important;
+        transition: all 0.15s ease !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #F1F5F9 !important;
+        color: #0F172A !important;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #EFF6FF !important;
+        color: #2563EB !important;
+        border: 1px solid #BFDBFE !important;
+        box-shadow: 0 1px 2px rgba(37, 99, 235, 0.08) !important;
+    }
+    .stTabs [data-baseweb="tab-highlight"],
+    .stTabs [data-baseweb="tab-border"] {
+        display: none !important;
+    }
+
+    /* Standard Button Normalization */
+    div.stButton > button {
+        background-color: #FFFFFF !important;
+        color: #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        font-size: 13.5px !important;
+        padding: 8px 16px !important;
+        transition: all 0.15s ease !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+    }
+    div.stButton > button:hover {
+        background-color: #F8FAFC !important;
+        border-color: #2563EB !important;
+        color: #2563EB !important;
+    }
+    div.stButton > button[kind="primary"] {
+        background-color: #2563EB !important;
+        color: #FFFFFF !important;
+        border: 1px solid #2563EB !important;
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2) !important;
+    }
+    div.stButton > button[kind="primary"]:hover {
+        background-color: #1D4ED8 !important;
+        border-color: #1D4ED8 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* Clean Card Containers */
     .clean-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -115,16 +169,16 @@ st.markdown("""
         font-weight: 700;
         color: #0F172A;
         letter-spacing: -0.6px;
-        line-height: 1.2;
+        line-height: 1.25;
         margin-bottom: 4px;
     }
     .main-subtitle {
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 600;
         color: #64748B;
         text-transform: uppercase;
         letter-spacing: 0.8px;
-        margin-bottom: 24px;
+        margin-bottom: 22px;
     }
     .hero-lead {
         font-size: 18px;
@@ -136,7 +190,7 @@ st.markdown("""
         font-size: 15px;
         color: #475569;
         line-height: 1.6;
-        margin-bottom: 28px;
+        margin-bottom: 26px;
     }
 
     /* Metric numbers */
@@ -164,7 +218,7 @@ st.markdown("""
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
         border-radius: 8px;
-        padding: 12px 16px;
+        padding: 12px 14px;
         text-align: center;
         font-size: 13px;
         font-weight: 600;
@@ -178,21 +232,13 @@ st.markdown("""
         font-size: 16px;
         font-weight: bold;
     }
-
-    /* Primary Button Style */
-    div.stButton > button {
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 14px;
-        transition: all 0.15s ease;
-    }
     
     /* Result Badge */
     .result-badge {
         background: #EFF6FF;
         border: 1px solid #BFDBFE;
         color: #1D4ED8;
-        padding: 18px;
+        padding: 20px;
         border-radius: 10px;
         text-align: center;
         margin-bottom: 16px;
@@ -258,10 +304,6 @@ def get_trained_model():
     }
 
 
-# Initialize Session State
-if 'current_page' not in st.session_state:
-    st.session_state.current_page = "Home"
-
 if 'model_state' not in st.session_state:
     with st.spinner("Initializing Deep Neural Network..."):
         st.session_state.model_state = get_trained_model()
@@ -271,25 +313,17 @@ df, missing_df = get_dataset()
 
 
 # ==============================================================================
-# TOP NAVIGATION BAR (Clean, Horizontal, No Numbers, No Sidebar)
+# TOP TABS NAVIGATION (Instant, Reliable, Legible, Beautiful)
 # ==============================================================================
-nav_items = ["Home", "Dataset", "Preprocessing", "Architecture", "Training", "Evaluation", "Predict"]
-cols = st.columns(len(nav_items))
-
-for idx, item in enumerate(nav_items):
-    is_active = (st.session_state.current_page == item)
-    btn_type = "primary" if is_active else "secondary"
-    if cols[idx].button(item, key=f"nav_{item}", use_container_width=True, type=btn_type):
-        st.session_state.current_page = item
-        st.rerun()
-
-st.write("")  # Spacing
+tab_home, tab_dataset, tab_prep, tab_arch, tab_train, tab_eval, tab_predict = st.tabs([
+    "Home", "Dataset", "Preprocessing", "Architecture", "Training", "Evaluation", "Predict"
+])
 
 
 # ==============================================================================
-# 1. HOME PAGE
+# 1. HOME TAB
 # ==============================================================================
-if st.session_state.current_page == "Home":
+with tab_home:
     st.markdown('<div class="main-title">Deep Feedforward Neural Network<br>for Classification</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Pattern Recognition • TAE 1 • Project Based Learning – Phase I</div>', unsafe_allow_html=True)
 
@@ -355,7 +389,7 @@ if st.session_state.current_page == "Home":
 
     # Optional Collapsible Technical Details
     with st.expander("View Technical Details"):
-        st.markdown("""
+        st.markdown(r"""
         - **Unidirectional Flow:** Signals propagate strictly forward: $x \to h^{(1)} \to h^{(2)} \to h^{(3)} \to \hat{y}$.
         - **Optimization:** Mini-batch gradient descent using Adam with early stopping to prevent overfitting.
         - **Loss Objective:** Categorical Cross-Entropy across 3 one-hot encoded flower species.
@@ -371,9 +405,9 @@ if st.session_state.current_page == "Home":
 
 
 # ==============================================================================
-# 2. DATASET PAGE
+# 2. DATASET TAB
 # ==============================================================================
-elif st.session_state.current_page == "Dataset":
+with tab_dataset:
     st.markdown('<div class="main-title">Iris Dataset</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Benchmark Multi-Class Pattern Recognition Data</div>', unsafe_allow_html=True)
 
@@ -434,9 +468,9 @@ elif st.session_state.current_page == "Dataset":
 
 
 # ==============================================================================
-# 3. PREPROCESSING PAGE
+# 3. PREPROCESSING TAB
 # ==============================================================================
-elif st.session_state.current_page == "Preprocessing":
+with tab_prep:
     st.markdown('<div class="main-title">Data Preprocessing</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Feature Scaling & Pipeline Flow</div>', unsafe_allow_html=True)
 
@@ -505,9 +539,9 @@ elif st.session_state.current_page == "Preprocessing":
 
 
 # ==============================================================================
-# 4. ARCHITECTURE PAGE
+# 4. ARCHITECTURE TAB
 # ==============================================================================
-elif st.session_state.current_page == "Architecture":
+with tab_arch:
     st.markdown('<div class="main-title">FNN Architecture</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Fully Connected Layer Topology</div>', unsafe_allow_html=True)
 
@@ -558,9 +592,9 @@ elif st.session_state.current_page == "Architecture":
 
 
 # ==============================================================================
-# 5. TRAINING PAGE
+# 5. TRAINING TAB
 # ==============================================================================
-elif st.session_state.current_page == "Training":
+with tab_train:
     st.markdown('<div class="main-title">Model Training</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Convergence & Accuracy Progression</div>', unsafe_allow_html=True)
 
@@ -613,7 +647,7 @@ elif st.session_state.current_page == "Training":
     """, unsafe_allow_html=True)
 
     with st.expander("View Technical Details"):
-        if st.button("Retrain Model Live"):
+        if st.button("Retrain Model Live", key="retrain_btn"):
             with st.spinner("Retraining FNN with fresh random initialization..."):
                 data = model_state['data']
                 new_model = build_fnn_model(learning_rate=0.01)
@@ -635,9 +669,9 @@ elif st.session_state.current_page == "Training":
 
 
 # ==============================================================================
-# 6. EVALUATION PAGE
+# 6. EVALUATION TAB
 # ==============================================================================
-elif st.session_state.current_page == "Evaluation":
+with tab_eval:
     st.markdown('<div class="main-title">Model Evaluation</div>', unsafe_allow_html=True)
     st.markdown('<div class="main-subtitle">Independent Test Set Verification</div>', unsafe_allow_html=True)
 
@@ -676,47 +710,47 @@ elif st.session_state.current_page == "Evaluation":
 
 
 # ==============================================================================
-# 7. PREDICTION PAGE
+# 7. PREDICTION TAB
 # ==============================================================================
-elif st.session_state.current_page == "Predict":
+with tab_predict:
     st.markdown('<div class="main-title">Try the Model</div>', unsafe_allow_html=True)
     st.markdown('<div style="font-size:15px; color:#64748B; margin-bottom:20px;">Enter flower measurements and let the neural network classify the flower.</div>', unsafe_allow_html=True)
 
+    # State variables for inputs
+    if 'pred_sl' not in st.session_state:
+        st.session_state.pred_sl = 6.4
+        st.session_state.pred_sw = 3.0
+        st.session_state.pred_pl = 5.3
+        st.session_state.pred_pw = 2.0
+
     # Preset helper
     p1, p2, p3 = st.columns(3)
-    if 'p_sl' not in st.session_state:
-        st.session_state.p_sl = 6.4
-        st.session_state.p_sw = 3.0
-        st.session_state.p_pl = 5.3
-        st.session_state.p_pw = 2.0
-
-    if p1.button("Sample: Setosa", use_container_width=True):
-        st.session_state.p_sl, st.session_state.p_sw, st.session_state.p_pl, st.session_state.p_pw = 5.0, 3.5, 1.4, 0.2
+    if p1.button("Sample: Setosa", key="btn_setosa", use_container_width=True):
+        st.session_state.pred_sl, st.session_state.pred_sw, st.session_state.pred_pl, st.session_state.pred_pw = 5.0, 3.5, 1.4, 0.2
         st.rerun()
-    if p2.button("Sample: Versicolor", use_container_width=True):
-        st.session_state.p_sl, st.session_state.p_sw, st.session_state.p_pl, st.session_state.p_pw = 6.0, 2.9, 4.5, 1.3
+    if p2.button("Sample: Versicolor", key="btn_versicolor", use_container_width=True):
+        st.session_state.pred_sl, st.session_state.pred_sw, st.session_state.pred_pl, st.session_state.pred_pw = 6.0, 2.9, 4.5, 1.3
         st.rerun()
-    if p3.button("Sample: Virginica", use_container_width=True):
-        st.session_state.p_sl, st.session_state.p_sw, st.session_state.p_pl, st.session_state.p_pw = 6.7, 3.1, 5.6, 2.4
+    if p3.button("Sample: Virginica", key="btn_virginica", use_container_width=True):
+        st.session_state.pred_sl, st.session_state.pred_sw, st.session_state.pred_pl, st.session_state.pred_pw = 6.7, 3.1, 5.6, 2.4
         st.rerun()
 
     st.write("")
 
     # Clean Input Card with 4 inputs
-    with st.container():
-        st.markdown('<div class="clean-card">', unsafe_allow_html=True)
-        c_i1, c_i2 = st.columns(2)
-        with c_i1:
-            sl = st.slider("Sepal Length (cm)", 4.0, 8.0, float(st.session_state.p_sl), 0.1)
-            sw = st.slider("Sepal Width (cm)", 2.0, 4.5, float(st.session_state.p_sw), 0.1)
-        with c_i2:
-            pl = st.slider("Petal Length (cm)", 1.0, 7.0, float(st.session_state.p_pl), 0.1)
-            pw = st.slider("Petal Width (cm)", 0.1, 2.6, float(st.session_state.p_pw), 0.1)
+    st.markdown('<div class="clean-card">', unsafe_allow_html=True)
+    c_i1, c_i2 = st.columns(2)
+    with c_i1:
+        sl = st.slider("Sepal Length (cm)", 4.0, 8.0, float(st.session_state.pred_sl), 0.1, key="sl_input")
+        sw = st.slider("Sepal Width (cm)", 2.0, 4.5, float(st.session_state.pred_sw), 0.1, key="sw_input")
+    with c_i2:
+        pl = st.slider("Petal Length (cm)", 1.0, 7.0, float(st.session_state.pred_pl), 0.1, key="pl_input")
+        pw = st.slider("Petal Width (cm)", 0.1, 2.6, float(st.session_state.pred_pw), 0.1, key="pw_input")
 
-        predict_clicked = st.button("Predict", type="primary", use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+    predict_clicked = st.button("Predict", key="predict_action", type="primary", use_container_width=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # Real Model Inference
+    # Real Model Inference (updates dynamically or on click)
     pred = predict_sample(
         model_state['model'],
         model_state['data']['scaler'],
