@@ -1,0 +1,117 @@
+{
+  "missingValues": [
+    {
+      "column": "sepal_length",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    },
+    {
+      "column": "sepal_width",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    },
+    {
+      "column": "petal_length",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    },
+    {
+      "column": "petal_width",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    },
+    {
+      "column": "target",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    },
+    {
+      "column": "species",
+      "missingCount": 0,
+      "missingPercentage": 0.0
+    }
+  ],
+  "splitCounts": {
+    "total": 150,
+    "train": 104,
+    "validation": 23,
+    "test": 23,
+    "trainPercentage": 70,
+    "valPercentage": 15,
+    "testPercentage": 15
+  },
+  "scalerStats": {
+    "Sepal Length (cm)": {
+      "mean": 5.8885,
+      "scale": 0.8463,
+      "var": 0.7162
+    },
+    "Sepal Width (cm)": {
+      "mean": 3.0913,
+      "scale": 0.4348,
+      "var": 0.1891
+    },
+    "Petal Length (cm)": {
+      "mean": 3.7894,
+      "scale": 1.7717,
+      "var": 3.1388
+    },
+    "Petal Width (cm)": {
+      "mean": 1.2144,
+      "scale": 0.7662,
+      "var": 0.587
+    }
+  },
+  "beforeScalingSample": [
+    [
+      4.9,
+      3.1,
+      1.5,
+      0.1
+    ],
+    [
+      5.8,
+      2.6,
+      4.0,
+      1.2
+    ],
+    [
+      4.9,
+      3.6,
+      1.4,
+      0.1
+    ],
+    [
+      4.9,
+      3.1,
+      1.5,
+      0.2
+    ]
+  ],
+  "afterScalingSample": [
+    [
+      -1.168,
+      0.0199,
+      -1.2922,
+      -1.4546
+    ],
+    [
+      -0.1045,
+      -1.13,
+      0.1189,
+      -0.0188
+    ],
+    [
+      -1.168,
+      1.1698,
+      -1.3487,
+      -1.4546
+    ],
+    [
+      -1.168,
+      0.0199,
+      -1.2922,
+      -1.324
+    ]
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "testLoss": 0.2659,
+  "testAccuracy": 95.65,
+  "testSamplesCount": 23,
+  "confusionMatrix": [
+    [
+      7,
+      0,
+      0
+    ],
+    [
+      0,
+      7,
+      1
+    ],
+    [
+      0,
+      0,
+      8
+    ]
+  ],
+  "classNames": [
+    "Iris Setosa",
+    "Iris Versicolor",
+    "Iris Virginica"
+  ],
+  "classificationReport": {
+    "Iris Setosa": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 7.0
+    },
+    "Iris Versicolor": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1-score": 0.9333333333333333,
+      "support": 8.0
+    },
+    "Iris Virginica": {
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "f1-score": 0.9411764705882353,
+      "support": 8.0
+    },
+    "accuracy": 0.9565217391304348,
+    "macro avg": {
+      "precision": 0.9629629629629629,
+      "recall": 0.9583333333333334,
+      "f1-score": 0.9581699346405229,
+      "support": 23.0
+    },
+    "weighted avg": {
+      "precision": 0.9613526570048309,
+      "recall": 0.9565217391304348,
+      "f1-score": 0.9563512361466325,
+      "support": 23.0
+    }
+  },
+  "testSamples": [
+    {
+      "sampleIndex": 1,
+      "rawFeatures": [
+        5.0,
+        2.3,
+        3.3,
+        1.0
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 99.98,
+      "match": true,
+      "probabilities": [
+        0.0002,
+        0.9998,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 2,
+      "rawFeatures": [
+        6.1,
+        2.6,
+        5.6,
+        1.4
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 69.17,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.3083,
+        0.6917
+      ]
+    },
+    {
+      "sampleIndex": 3,
+      "rawFeatures": [
+        6.7,
+        3.0,
+        5.0,
+        1.7
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 99.51,
+      "match": false,
+      "probabilities": [
+        0.0,
+        0.0049,
+        0.9951
+      ]
+    },
+    {
+      "sampleIndex": 4,
+      "rawFeatures": [
+        5.6,
+        2.5,
+        3.9,
+        1.1
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 5,
+      "rawFeatures": [
+        5.2,
+        3.4,
+        1.4,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 6,
+      "rawFeatures": [
+        6.4,
+        3.2,
+        4.5,
+        1.5
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 99.26,
+      "match": true,
+      "probabilities": [
+        0.0002,
+        0.9926,
+        0.0072
+      ]
+    },
+    {
+      "sampleIndex": 7,
+      "rawFeatures": [
+        4.4,
+        3.0,
+        1.3,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 8,
+      "rawFeatures": [
+        4.4,
+        3.2,
+        1.3,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 9,
+      "rawFeatures": [
+        6.4,
+        2.8,
+        5.6,
+        2.2
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "sampleIndex": 10,
+      "rawFeatures": [
+        5.7,
+        2.9,
+        4.2,
+        1.3
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 11,
+      "rawFeatures": [
+        4.9,
+        2.4,
+        3.3,
+        1.0
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 99.65,
+      "match": true,
+      "probabilities": [
+        0.0035,
+        0.9965,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 12,
+      "rawFeatures": [
+        7.3,
+        2.9,
+        6.3,
+        1.8
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "sampleIndex": 13,
+      "rawFeatures": [
+        6.5,
+        3.0,
+        5.5,
+        1.8
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 99.94,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0006,
+        0.9994
+      ]
+    },
+    {
+      "sampleIndex": 14,
+      "rawFeatures": [
+        6.5,
+        3.0,
+        5.8,
+        2.2
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 99.99,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0001,
+        0.9999
+      ]
+    },
+    {
+      "sampleIndex": 15,
+      "rawFeatures": [
+        5.8,
+        4.0,
+        1.2,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 16,
+      "rawFeatures": [
+        5.0,
+        3.4,
+        1.5,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 17,
+      "rawFeatures": [
+        5.4,
+        3.0,
+        4.5,
+        1.5
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 18,
+      "rawFeatures": [
+        6.9,
+        3.1,
+        5.1,
+        2.3
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 99.98,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0002,
+        0.9998
+      ]
+    },
+    {
+      "sampleIndex": 19,
+      "rawFeatures": [
+        6.3,
+        3.3,
+        4.7,
+        1.6
+      ],
+      "actualClass": "Iris Versicolor",
+      "actualIndex": 1,
+      "predictedClass": "Iris Versicolor",
+      "predictedIndex": 1,
+      "confidence": 77.71,
+      "match": true,
+      "probabilities": [
+        0.0005,
+        0.7771,
+        0.2224
+      ]
+    },
+    {
+      "sampleIndex": 20,
+      "rawFeatures": [
+        5.7,
+        3.8,
+        1.7,
+        0.3
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 21,
+      "rawFeatures": [
+        6.5,
+        3.0,
+        5.2,
+        2.0
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 99.95,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.0005,
+        0.9995
+      ]
+    },
+    {
+      "sampleIndex": 22,
+      "rawFeatures": [
+        5.4,
+        3.4,
+        1.7,
+        0.2
+      ],
+      "actualClass": "Iris Setosa",
+      "actualIndex": 0,
+      "predictedClass": "Iris Setosa",
+      "predictedIndex": 0,
+      "confidence": 100.0,
+      "match": true,
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sampleIndex": 23,
+      "rawFeatures": [
+        6.0,
+        3.0,
+        4.8,
+        1.8
+      ],
+      "actualClass": "Iris Virginica",
+      "actualIndex": 2,
+      "predictedClass": "Iris Virginica",
+      "predictedIndex": 2,
+      "confidence": 84.17,
+      "match": true,
+      "probabilities": [
+        0.0,
+        0.1583,
+        0.8417
+      ]
+    }
+  ]
+}
